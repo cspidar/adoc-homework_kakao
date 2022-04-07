@@ -39,13 +39,23 @@
 :icons: image
 :icontype: svg
 
-:source-highlighter: coderay
+:table-caption!:
+:table-number!:
+//테이블 타이틀 앞 글자 + 숫자 (Table 1.) 없애기
+:experimental:
+//실험 기능 확장
+:example-caption!:
+:example-number!:
+//==== block 앞 글자(example) + 숫자 (1.) 없애기
+:figure-caption!:
+
+:source-highlighter: highlightjs
 
 
 // 제목, 문서 속성 설정 시작
 
-= Title: Subtitle1
-:revnumber: Revision Number
+= 제목
+:revnumber: 부제목
 //:revdate:
 //:revremark:
 //기본 버전 위치 양식 (행) 사용 안함
@@ -56,29 +66,8 @@
 
 <<<
 
-// preface 시작
 
-:imagesdir: doc\000_preface
-
-include::doc\000_preface\preface.adoc[]
-
-:imagesdir!: doc\000_preface
-
-<<<
-
-// preface 끝
-
-
-
-// 본문 시작
-
-:imagesdir: doc\100_main
-
-include::doc\100_main\doc.adoc[leveloffset=+1]
-
-:imagesdir!: doc\100_main
-
-<<<
+== 본문
 
 
 
@@ -90,11 +79,3 @@ include::doc\100_main\doc.adoc[leveloffset=+1]
 
 
 
-
-
-
-
-
-
-[index]
-== Index

@@ -64,8 +64,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // 요소 조절
   // h1
   const h1 = document.querySelector("h1");
-  let title = h1.innerText.split(": ");
-  h1.innerHTML = `<span class="titleMain">${title[0]}</span> <span class="titleSub">${title[1]}</span>`;
+  // let title = h1.innerText.split(": ");
+  // h1.innerHTML = `<span class="titleMain">${title[0]}</span> <span class="titleSub">${title[1]}</span>`;
+  let title = h1.innerText;
+  h1.innerHTML = `<span class="titleMain">${title}</span>`;
+
   // console.log(title);
 
   // logo & button

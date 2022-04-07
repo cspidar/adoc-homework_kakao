@@ -100,9 +100,9 @@
   --gray7: #495057;
   --gray8: #343a40;
   --gray9: #212529;
-  --ao0: #fe5d01;
+  --ao0: #495057;
   --ao1: #fe5e0175;
-  --ao2: rgb(250, 116, 26);
+  --ao2: #495057;
 }
 :root {
   color: var(--gray8);
@@ -117,7 +117,7 @@
   font-weight: normal;
   margin: 0;
   line-height: 1.88;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   -webkit-font-smoothing: antialiased;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -328,7 +328,7 @@ h1 {
   font-weight: 100;
   letter-spacing: 1.08px;
   text-align: left;
-  color: #fe5d01;
+  color: #495057;
 }
 .titleSub {
   opacity: 0.6;
@@ -843,11 +843,17 @@ div.sect2 > h3 > span.image > img {
 .blue {
   color: blue;
 }
+.green {
+  color: rgb(6, 171, 6);
+}
 .small {
   font-size: 0.8rem;
 }
 .large {
   font-size: 1.1rem;
+}
+.bold {
+  font-weight: 700;
 }
 
 .uiButton.pdf {
@@ -919,6 +925,32 @@ div.sect2 > h3 > span.image > img {
   }
 }
 
+/* UI */
+#toc {
+  transition-duration: 100ms;
+}
+/* .uiButton.toc {
+  position: fixed;
+  left: 22vw;
+  border: solid 4px;
+  border-radius: 4px;
+  bottom: 48vh;
+  z-index: 999;
+  cursor: pointer;
+  padding: 0.4rem 0.5rem;
+  height: 50px;
+  width: 10px;
+} */
+
+code {
+  font-family: "d2coding";
+  color: var(--gray8);
+  background-color: var(--gray0);
+}
+.CodeRay.highlight {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
 @media print {
   #toc {
     border-bottom: 1px solid #ddddd8 !important;
@@ -955,7 +987,7 @@ div.sect2 > h3 > span.image > img {
     color: rgba(0, 0, 0, 0.6) !important;
     font-size: 0.9em;
   }
-  .hide-on-print {
+  /* .hide-on-print {
     display: none !important;
   }
   .print-only {
@@ -966,31 +998,13 @@ div.sect2 > h3 > span.image > img {
   }
   .show-for-print {
     display: inherit !important;
+  } */
+  div.uiButton {
+    display: none;
   }
-}
-
-/* UI */
-#toc {
-  transition-duration: 100ms;
-}
-/* .uiButton.toc {
-  position: fixed;
-  left: 22vw;
-  border: solid 4px;
-  border-radius: 4px;
-  bottom: 48vh;
-  z-index: 999;
-  cursor: pointer;
-  padding: 0.4rem 0.5rem;
-  height: 50px;
-  width: 10px;
-} */
-
-code {
-  font-family: "d2coding";
-  color: var(--gray8);
-  background-color: var(--gray0);
-}
-.CodeRay.highlight {
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  code {
+    overflow-x: visible;
+    word-wrap: break-word;
+    white-space: pre-line;
+  }
 }
