@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.12">
+<title>과제 전형</title>
+<link rel="stylesheet" href="./custom.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5, user-scalable=yes"
+/>
+<script src="./asset/main.js"></script>
+
+<style>
+  .uiButton {
+    position: fixed;
+    right: 1rem;
+    z-index: 999;
+    cursor: pointer;
+    padding: 0.4rem 0.5rem;
+    min-height: 30px;
+    min-width: 70px;
+  }
+  .uiButton {
+    appearance: none;
+    background-color: var(--gray0);
+    border: 0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: var(--gray8);
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+
+    outline: none;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 2px 4px;
+  }
+
+  .uiButton:disabled {
+    pointer-events: none;
+  }
+
+  .uiButton:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+  .uiButton.pdf {
+    bottom: 2.5rem;
+  }
+  .uiButton.toc {
+    bottom: 2.5rem;
+  }
+</style>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>과제 전형</h1>
+<div class="details">
+<span id="revnumber"> TossPayments - Technical Writer | 지원자: 이길재</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_api_설명">1. API 설명</a>
+<ul class="sectlevel2">
+<li><a href="#_먼저_확인하세요">1.1. 먼저, 확인하세요</a>
+<ul class="sectlevel3">
+<li><a href="#useAPI">1.1.1. API 사용하기</a></li>
+</ul>
+</li>
+<li><a href="#_api_목록">1.2. API 목록</a>
+<ul class="sectlevel3">
+<li><a href="#_결제">1.2.1. 결제</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_요청_또는_응답_자체_개선_방안">2. 요청 또는 응답 자체 개선 방안</a>
+<ul class="sectlevel2">
+<li><a href="#_요청">2.1. 요청</a></li>
+<li><a href="#_응답">2.2. 응답</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_api_설명">1. API 설명</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>'토스페이먼츠 과제 전형 API' 엔드포인트(Endpoint)와 객체 정보, 파라미터, 요청 및 응답 예제에 대해 설명합니다.</p>
+</div>
+<div class="sect2">
+<h3 id="_먼저_확인하세요">1.1. 먼저, 확인하세요</h3>
+<div class="paragraph">
+<p>본 문서의 내용을 이해하기 위해서는 <a href="#useAPI">'API 사용'</a>에 대한 사전 지식이 필요합니다.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="./images/icons/note.svg" alt="Note">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>본 문서에서 제공하는 내용과 예제는 '토스페이먼트 과제 전형 API&#8217;에 대한 설명입니다. <a href="https://docs.tosspayments.com/">토스페이먼츠 기술 문서</a>의 API 사용법과 내용이 다소 상이합니다.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="useAPI">1.1.1. API 사용하기</h4>
+<div class="paragraph">
+<p>'토스페이먼츠 과제 전형 API&#8217;를 사용하기 위해 필요한 키 정보에 대해 자세히 알아봅니다.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="./images/icons/note.svg" alt="Note">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>'토스페이먼츠 과제 전형 API&#8217;는 <a href="https://docs.tosspayments.com/">토스페이먼츠 기술 문서</a>의 <a href="https://docs.tosspayments.com/guides/apis/usage">API 사용하기</a>와 달리 '인증을 위한 API 키 준비&#8217;와 '인증' 항목이 존재하지 않습니다.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_보안">1.1.1.1. 보안</h5>
+<div class="paragraph">
+<p>'토스페이먼츠 과제 전형 API&#8217;는 서비스형 플랫폼(Platform as a Service, PaaS) 중 하나인 <a href="https://www.heroku.com/">Heroku</a>를 사용하여 서비스합니다.<br>
+본 API의 보안 관련 자세한 내용은 <a href="https://devcenter.heroku.com/categories/security">Heroku Security</a> 기술 문서의 내용을 참고하세요.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_응답_처리">1.1.1.2. 응답 처리</h5>
+<div class="paragraph">
+<p>'토스페이먼츠 과제 전형 API&#8217;는 요청에 대한 성공 여부를 HTTP 상태 코드로 전달합니다. 모든 API 응답, 요청 본문(body)은 JSON 포맷입니다. 따라서 응답 헤더에는 다음과 같이 <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Type">Content-Type</a>이 포함됩니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">Content-Type: application/json</code></pre>
+</div>
+</div>
+<div class="sect5">
+<h6 id="HTTPStatus">응답 HTTP 코드 목록</h6>
+<table class="tableblock frame-ends grid-all stretch">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP 상태 코드</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>200 - OK</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>요청이 성공적으로 처리된 경우입니다.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>400 - Bad Request</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>요청을 처리 할 수 없는 경우입니다. 필수 파라미터를 보내지 않았거나, 파라미터 포맷이 잘못되면 이 응답이 돌아올 수 있습니다.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>500 - Server Error</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>토스페이먼츠 과제 전형 API 서버에 에러가 발생한 경우입니다.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="error">에러 객체</h6>
+<div class="paragraph">
+<p>요청이 정상적으로 처리되지 않으면 응답으로 HTTP 상태 코드와 함께 아래와 같은 에러 객체가 돌아옵니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">{
+"result": "FAILED",
+"code": "MISSING_PARAMETER",
+"message": "\"amount\" 값이 누락되었습니다."
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><b class="button">result</b>: 결제 실행 결과를 나타냅니다. <b class="button">SUCCESS</b>(결제 성공), <b class="button">FAILED</b>(결제 실패) 중 하나입니다.</p>
+</li>
+<li>
+<p><b class="button">code</b>: 에러 타입을 보여주는 에러 코드입니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><b class="button">MISSING_PARAMETER</b>: 필수 파라미터가 누락되었습니다.</p>
+</li>
+<li>
+<p><b class="button">INVALID_PARAMETER</b>: 잘못된 값으로 요청되었습니다.<br>
+(e.g. string 값에 number 입력)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><b class="button">message</b>: 에러 메시지입니다. 에러 발생 이유를 알려줍니다.</p>
+</li>
+</ul>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_api_목록">1.2. API 목록</h3>
+<div class="sect3">
+<h4 id="_결제">1.2.1. 결제</h4>
+<div class="paragraph">
+<p>결제와 관련한 모든 API와 결제 API 요청에 대한 응답으로 돌아오는 Payment 객체를 살펴봅니다.</p>
+</div>
+<div class="sect4">
+<h5 id="paymentObj">1.2.1.1. Payment 객체</h5>
+<div class="paragraph">
+<p>결제 정보를 담고 있는 객체입니다.</p>
+</div>
+<div class="paragraph">
+<p>결제 승인 요청에 대한 응답은 Payment 객체로 항상 동일합니다.</p>
+</div>
+<div class="exampleblock">
+<div class="title">객체 상세</div>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>card</strong> &#160; <span class="green">object</span><br>
+카드로 결제하면 제공되는 카드 관련 정보입니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>brand</strong> &#160; <span class="green">string</span><br>
+카드사 코드입니다</p>
+</li>
+<li>
+<p><strong>number</strong> &#160; <span class="green">string</span><br>
+카드번호 입니다.</p>
+</li>
+<li>
+<p><strong>expiry</strong> &#160; <span class="green">string</span><br>
+카드 만료 일자입니다.</p>
+</li>
+<li>
+<p><strong>cvc</strong> &#160; <span class="green">string</span><br>
+카드 CVC 번호입니다.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>amount</strong> &#160; <span class="green">string</span><br>
+카드로 결제할 금액입니다.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>description</strong> &#160; <span class="green">string</span><br>
+결제를 설명하는 상세 텍스트 입니다.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>id</strong> &#160; <span class="green">string</span><br>
+결제 ID 입니다.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>result</strong> &#160; <span class="green">string</span><br>
+결제 실행 결과를 나타냅니다. <b class="button">SUCCESS</b>(결제 성공), <b class="button">FAILED</b>(결제 실패) 중 하나입니다.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>createdAt</strong> &#160; <span class="green">string</span><br>
+결제가 일어난 날짜와 시간 정보입니다. ISO 8601 형식인 <b class="button">yyyy-MM-dd&#8217;T&#8217;HH:mm:ss±hh:mm</b> 으로 돌아옵니다.<br>
+(e.g. <b class="button">2022-01-01T00:00:00+09:00</b>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_결제_승인">1.2.1.2. 결제 승인</h5>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><span class="green large bold">POST</span> /v1/payments/{paymentKey}<br>
+paymentKey에 해당하는 결제를 검증하고 승인합니다.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Path 파라미터</div>
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="./images/icons/note.svg" alt="Note">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>'토스페이먼츠 과제 전형 API&#8217;는 별도의 Path 파라미터를 제공하지 않습니다.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Request Body 파라미터</div>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>card</strong> &#160; <span class="red">필수</span> · <span class="green">object</span><br>
+카드로 결제하면 제공되는 카드 관련 정보입니다.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="./images/icons/note.svg" alt="Note">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>'토스페이먼츠 과제 전형 API&#8217;에서는 카드 외의 다른 결제 수단을 제공하지 않습니다.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>brand</strong> &#160; <span class="red">필수</span> · <span class="green">string</span><br>
+카드사 코드입니다</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="./images/icons/tip.svg" alt="Tip">
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a href="https://docs.tosspayments.com/reference/codes#%EC%B9%B4%EB%93%9C%EC%82%AC-%EC%BD%94%EB%93%9C">카드사 코드</a>에서 전체 지원 리스트를 확인 할 수 있습니다.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>number</strong> &#160; <span class="red">필수</span> · <span class="green">string</span><br>
+카드번호 입니다.</p>
+</li>
+<li>
+<p><strong>expiry</strong> &#160; <span class="red">필수</span> · <span class="green">string</span><br>
+카드 만료 일자로, MMYY 형식의 4자리 숫자로 이루어진 문자열입니다.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="./images/icons/tip.svg" alt="Tip">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>2025년 04월의 경우 "0425" 입니다.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>cvc</strong> &#160; <span class="red">필수</span> · <span class="green">string</span><br>
+카드 CVC 번호로, 3자리 숫자로 이루어진 문자열입니다.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>amount</strong> &#160; <span class="red">필수</span> · <span class="green">string</span><br>
+카드로 결제할 금액입니다.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>description</strong> &#160; <span class="green">string</span><br>
+결제를 설명하는 상세 텍스트 입니다.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Response</div>
+<div class="content">
+<div class="paragraph">
+<div class="title">성공</div>
+<p>결제 승인 요청에 성공했다면 <a href="#HTTPStatus">HTTP 상태 코드 200</a>과 함께 <a href="#paymentObj">Payment 객체</a>가 돌아옵니다. 필드에 값이 제대로 들어왔는지 확인하세요.</p>
+</div>
+<hr>
+<div class="paragraph">
+<div class="title">실패</div>
+<p>결제 승인 요청에 실패했다면 <a href="#HTTPStatus">HTTP 상태 코드 400</a>와 함께 <a href="#error">에러 객체</a>가 돌아옵니다.</p>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="exampleblock">
+<div class="title">예시</div>
+<div class="content">
+<div class="exampleblock">
+<div class="title">요청</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl --request POST \
+  --url https://tech-writer-assignment.herokuapp.com/payments \
+  --header 'Content-Type: application/json' \
+  --data '{"card": {"brand": "BC","number": "5464650123268072","expiry": "1124","cvc": "123"},"amount": 2000,"description": "토스팀 맨투맨 구매"}'</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">응답</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">{
+  "id": "pm__19XJJ02eZvKYlo2ClwuJ1rbA",
+  "result": "SUCCESS",
+  "createdAt": "2020-03-20T12:03:31.991Z",
+  "data": {
+    "card": {
+      "brand": "BC",
+      "number": "5464650123268072",
+      "expiry": "1124",
+      "cvc": "123"
+      },
+    "amount": 2000,
+    "description": "토스팀 맨투맨 구매"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="exampleblock">
+<div class="title">NodeJS 요청 샘플 코드</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">const http = require("https");
+
+const options = {
+  method: "POST",
+  hostname: "tech-writer-assignment.herokuapp.com",
+  port: null,
+  path: "/payments",
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
+
+const req = http.request(options, function (res) {
+  let chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function () {
+    const body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+});
+
+req.write(
+  JSON.stringify({
+    card: {
+      brand: "BC",
+      number: "5464650123268072",
+      expiry: "1124",
+      cvc: "123",
+    },
+    amount: 2000,
+    description: "토스팀 맨투맨 구매",
+  })
+);
+req.end();</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_요청_또는_응답_자체_개선_방안">2. 요청 또는 응답 자체 개선 방안</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>과제용으로 생략된 형태가 아닌 일반 사용을 위한 API라는 가정 하에, 개선이 필요하다고 생각되는 점에 대해 말씀 드리겠습니다.</p>
+</div>
+<div class="sect2">
+<h3 id="_요청">2.1. 요청</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>주문 정보가 없음<br>
+서버측에서 결제 요청을 특정할 수 있는 대상중 필수 항목은 amount 밖에 존재하지 않고, 해당 값은 횟수가 늘어남에 따라 중복 가능성이 있어 오류 발생 여지가 있어 보입니다. 각 결제건을 구분할 수 있는 고유 토큰이 필요하다고 생각합니다.</p>
+</li>
+<li>
+<p>인증 정보가 없음<br>
+서버측에서 결제 요청 대상을 특정할 수 있는 값을 요청 단계에서 요구하여, 여러 결제 요청의 발신처를 구분 할 수 있는 수단이 필요하다고 생각됩니다.</p>
+</li>
+<li>
+<p>카드 cvc 정보 제공<br>
+토스페이먼츠 기술문서에서는 카드의 cvc 정보가 아닌 유효기간과 비밀번호 앞 2자리를 요구하고 있습니다. 둘 중 어떤 방식이 보안 측면에서 유리한지 이해가 부족한 관계로 단정지어 답변 드릴 수는 없으나, 관련 내용에 대한 검토가 필요할 것으로 생각됩니다.</p>
+</li>
+<li>
+<p>모호한 API 주소<br>
+API 주소가 구체적이지 않아 요청 내용을 파악하기 위해선 별도 확인이 필요한 번거로움이 있습니다. 요청 내용을 암시하는 URI로 주소를 변경하면 보다 직관적인 확인이 가능할 것으로 보입니다.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_응답">2.2. 응답</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>민감 정보 노출<br>
+결제 시 제공 받은 정보를 그대로 응답하는 과정에서 민감 정보가 노출될 가능성이 있어 마스킹 하거나 생략하는 등의 처리가 필요해 보입니다. 신뢰성있는 보안 방식을 사용하고 고유한 인코딩/디코딩 과정을 거친다면 그 우려가 상당히 줄어들 것으로 생각되긴 하지만, 요청 과정에서 결제 건 별 고유 토큰을 제공하고 이를 응답 본문에 돌려주는 것이 더 바람직한 방법이라고 생각합니다.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+ TossPayments - Technical Writer | 지원자: 이길재<br>
+Last updated 2022-04-04 23:43:03 +0900
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>
