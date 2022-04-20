@@ -105,7 +105,7 @@ btn:[https://developers.kakao.com/tool/demo/message/kakaolink?default_template=f
 +
 image::images\1650373914.png[]
 
-. 카카오링크 API를 구현 할 Svelte 파일(btn:[App.svelte] 또는 btn:[*.svelte])의 script 영역에 JavaScript SDK 파일을 가져오기(Import) 합니다.
+. 복사한 파일을 카카오링크 API를 구현 할 Svelte 파일(btn:[App.svelte] 또는 btn:[*.svelte])의 ``script`` 영역에 가져오기(Import) 합니다.
 +
 [source, html]
 ----
@@ -160,37 +160,14 @@ JavaScript SDK가 정상적으로 초기화된 상태라면, 해당 웹 페이�
 
 <<<
 
-
-
-
-
-[#createButton]
-=== 버튼 만들기
-
-JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 있지만, 이 문서에서는 직접 추가한 버튼에 메시지 보내기 요청을 연결하는 방법만 설명합니다. 메시지 보내기 요청 시 보내질 메시지 내용을 전달한다는 점은 같습니다.
-
-카카오링크 API를 구현 할 Svelte 파일(btn:[App.svelte] 또는 btn:[*.svelte])의 script 영역 밖에 다음의 button 태그를 추가합니다. 
-
-[source, html]
-----
-
-----
-
-
-
-다음은 ~~~ 하고 ~~~ 한 예제입니다. 예제를 참고합니다.
-
-
-
-
-버튼 만들기에서 자세하게 설명 (+ 예시) 하고 스벨트에서만 바뀌어야 하는것들 모아서 따로 설명 후, 아래는 링크로 대체 
-
-
-
+[#callFunc]
 === 함수 호출하기
 
-전송하려는 메시지 템플릿의 종류에 따른 호출 함수는 아래 표를 참고합니다.
+JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 있지만, 이 문서에서는 직접 추가한 버튼에 연결하는 방법을 설명합니다.
 
+. 호출 방법 선택하기
+아래 표에서 전송 가능한 메시지 템플릿의 종류에 따른 호출 함수를 선택합니다.
++
 [cols="~,~,~", options="header", frame=topbot]
 |===
 |메시지 종류 |메시지 구성 방법 |함수
@@ -206,9 +183,65 @@ JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 �
 |사용자 정의 템플릿
 |https://developers.kakao.com/sdk/reference/js/release/Kakao.Link.html#.sendScrap[sendScrap()]
 |===
++
+.메시지 템플릿
+[NOTE]
+====
+메시지 템플릿 종류와 기능에 대한 자세한 내용은 https://developers.kakao.com/docs/latest/ko/message/message-template[메시지 템플릿]을 참고합니다.
+====
+
+
+. 호출 본문 작성하기
+``script`` 영역에 임의의 함수(``linkKakao()``)를 선언한 뒤, 선언한 함수 내부에 선택한 호출 함수(``sendDefault()``)를 사용하여 호출 본문을 작성합니다. 아래 예제를 참고합니다.
++
+[source, html]
+----
+
+
+----
++
+필요한 경우 호출 본문을 버튼에 인라인으로 작성할 수도 있습니다. 자세한 내용은 <<callFuncInline>>을 참고합니다.
 
 
 
+
+[#createButton]
+=== 버튼 만들기
+
+
+. 카카오링크 API를 구현 할 Svelte 파일(btn:[App.svelte] 또는 btn:[*.svelte])의 script 영역 밖에 다음의 button 태그를 추가합니다. 
++
+[source, html]
+----
+
+----
++
+. 버튼 내부에 호출 본문을 작성할 수도 있습니다. <<callFuncInline>>을 참고합니다.
++
+. 다음은 호출 함수(``sendDefault()``)를 사용하여 호출 본문(템플릿: 텍스트)을 작성하고 버튼에 연결한 예제입니다.
++
+[source, html]
+----
+
+----
+
+
+
+
+
+[#callFuncInline]
+.호출 본문 인라인 작성
+====
+[source, html]
+----
+
+----
+====
+
+
+
+
+=== 템플릿별 Svelte 함수 호출 예제
 
 템플릿 종류별 Svelte 함수 호출 예제입니다.
 
