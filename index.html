@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.12">
+<meta name="generator" content="Asciidoctor 2.0.15">
 <title>과제</title>
 <link rel="stylesheet" href="./custom.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
@@ -102,45 +102,22 @@
 <div class="exampleblock">
 <div class="title">과제 안내</div>
 <div class="content">
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-선택
-</td>
-<td class="hdlist2">
-<p>2. 서비스에 카카오링크를 적용하는 방법</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-서비스
-</td>
-<td class="hdlist2">
-<p>Svelte Web 애플리케이션</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-언어
-</td>
-<td class="hdlist2">
-<p>JavaScript</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-프레임워크
-</td>
-<td class="hdlist2">
-<p>Svelte - 버전: ^3.46.4</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-테스트 환경
-</td>
-<td class="hdlist2">
+<div class="ulist">
+<ul>
+<li>
+<p>선택: 2. 서비스에 카카오링크를 적용하는 방법</p>
+</li>
+<li>
+<p>서비스: Svelte Web 애플리케이션</p>
+</li>
+<li>
+<p>언어: JavaScript</p>
+</li>
+<li>
+<p>프레임워크: Svelte - 버전: ^3.46.4</p>
+</li>
+<li>
+<p>테스트 환경</p>
 <div class="ulist">
 <ul>
 <li>
@@ -151,9 +128,8 @@
 </li>
 </ul>
 </div>
-</td>
-</tr>
-</table>
+</li>
+</ul>
 </div>
 <hr>
 <div class="paragraph">
@@ -194,15 +170,16 @@
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;script&gt;
-  import { onMount } from "svelte";
+  // 설치하기
   import "./kakao.js";
 
-  Kakao.init("6e437b23b2779fece18e6c86a9b86bb7");
+  // 초기화
+  Kakao.init("JAVASCRIPT_KEY");
   console.log(Kakao.isInitialized());
 
+  // 함수 호출하기
   function shareKakao() {
-    Kakao.Link.createDefaultButton({
-      container: "#kakao-link-btn",
+    Kakao.Link.sendDefault({
       objectType: "text",
       text: "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
       link: {
@@ -213,6 +190,7 @@
   }
 &lt;/script&gt;
 
+&lt;!-- 버튼 만들기 --&gt;
 &lt;button on:click={shareKakao}&gt;
   &lt;img
     src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
@@ -473,8 +451,7 @@ Kakao.isInitialized();</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;button
   on:click={() =&gt; {
-    Kakao.Link.createDefaultButton({
-      container: "#kakao-link-btn",
+    Kakao.Link.sendDefault({
       objectType: "text",
       text: "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
       link: {
@@ -531,7 +508,7 @@ Kakao.isInitialized();</code></pre>
 <div id="footer">
 <div id="footer-text">
  Kakao: Technical Writer | 지원자: 이길재<br>
-Last updated 2022-04-21 22:17:12 +0900
+Last updated 2022-04-22 08:56:08 +0900
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

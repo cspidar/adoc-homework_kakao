@@ -66,14 +66,13 @@
 
 .과제 안내
 ====
-[horizontal]
-선택:: 2. 서비스에 카카오링크를 적용하는 방법
-서비스:: Svelte Web 애플리케이션
-언어:: JavaScript
-프레임워크:: Svelte - 버전: ^3.46.4
-테스트 환경:: 
-* 빌드 툴: Vite - 버전: ^2.7.2
-* 브라우저: Chrome - 버전: 100.0.4896.127(공식 빌드) (64비트)
+* 선택: 2. 서비스에 카카오링크를 적용하는 방법
+* 서비스: Svelte Web 애플리케이션
+* 언어: JavaScript
+* 프레임워크: Svelte - 버전: ^3.46.4
+* 테스트 환경
+** 빌드 툴: Vite - 버전: ^2.7.2
+** 브라우저: Chrome - 버전: 100.0.4896.127(공식 빌드) (64비트)
 
 ''''
 
@@ -101,15 +100,16 @@ btn:[https://developers.kakao.com/tool/demo/message/kakaolink?default_template=f
 [source, html]
 ----
 <script>
-  import { onMount } from "svelte";
+  // 설치하기
   import "./kakao.js";
 
-  Kakao.init("6e437b23b2779fece18e6c86a9b86bb7");
+  // 초기화
+  Kakao.init("JAVASCRIPT_KEY");
   console.log(Kakao.isInitialized());
 
+  // 함수 호출하기
   function shareKakao() {
-    Kakao.Link.createDefaultButton({
-      container: "#kakao-link-btn",
+    Kakao.Link.sendDefault({
       objectType: "text",
       text: "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
       link: {
@@ -120,6 +120,7 @@ btn:[https://developers.kakao.com/tool/demo/message/kakaolink?default_template=f
   }
 </script>
 
+<!-- 버튼 만들기 -->
 <button on:click={shareKakao}>
   <img
     src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
@@ -298,8 +299,7 @@ JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 �
 ----
 <button
   on:click={() => {
-    Kakao.Link.createDefaultButton({
-      container: "#kakao-link-btn",
+    Kakao.Link.sendDefault({
       objectType: "text",
       text: "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
       link: {
