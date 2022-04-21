@@ -100,8 +100,32 @@ btn:[https://developers.kakao.com/tool/demo/message/kakaolink?default_template=f
 
 [source, html]
 ----
+<script>
+  import { onMount } from "svelte";
+  import "./kakao.js";
 
+  Kakao.init("6e437b23b2779fece18e6c86a9b86bb7");
+  console.log(Kakao.isInitialized());
 
+  function shareKakao() {
+    Kakao.Link.createDefaultButton({
+      container: "#kakao-link-btn",
+      objectType: "text",
+      text: "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
+      link: {
+        mobileWebUrl: "https://developers.kakao.com",
+        webUrl: "https://developers.kakao.com",
+      },
+    });
+  }
+</script>
+
+<button on:click={shareKakao}>
+  <img
+    src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+    alt="카카오링크 보내기 버튼"
+  />
+</button>
 ----
 
 이 문서에서 위 코드의 구성 요소에 대한 설명과 추가 내용을 확인할 수 있습니다.
@@ -235,7 +259,7 @@ JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 �
 +
 . 필요한 경우 버튼 내부에 호출 본문을 작성할 수도 있습니다. <<callFuncInline>>을 참고합니다.
 +
-. 아래에서 템플릿 종류별 메시지 보내기 관련 내용을 확인할 수 있습니다. btn:[직접 만든 버튼 사용하기] 항목의 내용을 확인합니다.
+. 아래에서 템플릿 종류별 메시지 보내기 관련 내용을 확인할 수 있습니다. 각 항목의 btn:[직접 만든 버튼 사용하기] 내용을 확인합니다.
 +
 * https://developers.kakao.com/docs/latest/ko/message/js-link#default-template-msg[기본 템플릿으로 메시지 보내기]
 * https://developers.kakao.com/docs/latest/ko/message/js-link#custom-template-msg[사용자 정의 템플릿으로 메시지 보내기]
@@ -252,7 +276,12 @@ JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 �
 +
 [source, html]
 ----
-
+<button on:click={shareKakao}>
+  <img
+    src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+    alt="카카오링크 보내기 버튼"
+  />
+</button>
 ----
 +
 . 필요한 경우 버튼 내부에 호출 본문을 작성할 수도 있습니다. <<callFuncInline>>을 참고합니다.
@@ -267,7 +296,24 @@ JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 �
 ====
 [source, html]
 ----
-
+<button
+  on:click={() => {
+    Kakao.Link.createDefaultButton({
+      container: "#kakao-link-btn",
+      objectType: "text",
+      text: "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
+      link: {
+        mobileWebUrl: "https://developers.kakao.com",
+        webUrl: "https://developers.kakao.com",
+      },
+    });
+  }}
+>
+  <img
+    src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+    alt="카카오링크 보내기 버튼"
+  />
+</button>
 ----
 ====
 
