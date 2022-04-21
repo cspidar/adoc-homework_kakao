@@ -277,4 +277,4 @@ JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 �
 
 === 더보기
 
-btn:[https://developers.kakao.com/docs/latest/ko/sdk-download/js[JavaScript SDK 다운로드]] btn:[https://developers.kakao.com/sdk/reference/js/release/Kakao.html[JavaScript SDK 레퍼런스]] btn:[https://developers.kakao.com/tool/template-builder/app[메시지 템플릿 도구]] 
+btn:[https://developers.kakao.com/docs/latest/ko/sdk-download/js[JavaScript SDK 다운로드]] | btn:[https://developers.kakao.com/sdk/reference/js/release/Kakao.html[JavaScript SDK 레퍼런스]] | btn:[https://developers.kakao.com/tool/template-builder/app[메시지 템플릿 도구]] 
