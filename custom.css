@@ -920,7 +920,8 @@ div.sect2 > h3 > span.image > img {
     /* word-break: break-all; */
     /* overflow-x: visible;
     text-overflow: clip; */
-    word-break: normal;
+    /* word-break: normal; */
+    word-break: keep-all;
     font-size: 14px;
   }
 }
