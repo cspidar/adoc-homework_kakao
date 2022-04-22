@@ -208,13 +208,13 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><span class="menuseq"><b class="menu">메시지</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">카카오링크: JavaScript</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem"><a href="https://developers.kakao.com/docs/latest/ko/message/js-link#구현-방법-선택하기">구현 방법 선택하기</b></span></a> 에서 메시지 API와 메시지 종류 및 구성 방법에 대한 내용을 확인하고 선택합니다. Svelte는 공유하기 버튼을 JavaScript SDK를 통해 추가하기 어렵기 때문에, 호출 방법은 직접 만든 버튼을 사용하는 것으로 <a href="#createButton">버튼 만들기</a>에서 안내합니다.</p>
+<p><span class="menuseq"><b class="menu">메시지</b>&#160;<b class="caret">&#8250;</b> <b class="submenu">카카오링크: JavaScript</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem"><a href="https://developers.kakao.com/docs/latest/ko/message/js-link#구현-방법-선택하기">구현 방법 선택하기</b></span></a> 에서 메시지 API와 메시지 종류 및 구성 방법에 대한 내용을 확인하고 선택합니다. 호출 방법은, Svelte는 공유하기 버튼을 JavaScript SDK를 통해 추가하기 어렵기 때문에, 직접 만든 버튼을 사용하는 것으로 <a href="#createButton">버튼 만들기</a>에서 안내합니다.</p>
 </li>
 <li>
 <p><span class="menuseq"><b class="menu">시작하기</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem"><a href="https://developers.kakao.com/docs/latest/ko/getting-started/app">애플리케이션 등록</b></span></a> 에서 <a href="https://developers.kakao.com/docs/latest/ko/getting-started/app#create">앱 만들기</a>, <a href="https://developers.kakao.com/docs/latest/ko/getting-started/app#app-key">앱 키 발급하기</a>, <a href="https://developers.kakao.com/docs/latest/ko/getting-started/app#platform-web">Web 플랫폼 등록</a> 관련 내용을 확인하고 과정을 수행합니다.</p>
 </li>
 <li>
-<p>Svelte는 Vite, Rollup, Webpack과 같은 빌드 도구와 함께 사용됩니다. 이 문서에서는 <a href="https://github.com/sveltejs/vite-plugin-svelte">Vite 플러그인</a> 사용 기준으로 안내합니다. 각 빌드 도구의 자세한 내용은 해당 문서 사이트에서 확인할 수 있습니다.</p>
+<p>Svelte는 Vite, Rollup, Webpack과 같은 빌드 도구와 함께 사용됩니다. 이 문서에서는 <a href="https://github.com/sveltejs/vite-plugin-svelte">Vite 플러그인</a> 사용 기준으로 안내합니다. 빌드 도구에 대한 자세한 내용은 해당 사이트 문서에서 확인할 수 있습니다.</p>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -254,7 +254,7 @@
 <p><a href="https://developers.kakao.com/docs/latest/ko/sdk-download/js">SDK 다운로드</a>에서 최신 버전 JavaScript SDK를 내려받습니다.</p>
 </li>
 <li>
-<p>다운로드한 JavaScript SDK 파일(kakao.js)을 Svelte 프로젝트 폴더 내 원하는 경로에 복사합니다.</p>
+<p>다운로드한 JavaScript SDK 파일(kakao.js)을 Svelte 프로젝트 폴더 내 원하는 경로에 복사합니다. <code>App.svelte</code>와 같은 폴더(<code>./src</code>)에 복사했다고 가정하고 설명합니다.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/1650373914.png" alt="1650373914">
@@ -262,7 +262,7 @@
 </div>
 </li>
 <li>
-<p>복사한 파일을 카카오링크 API를 구현 할 Svelte 파일(<code>App.svelte</code> 또는 <code>*.svelte</code>)의 <code>script</code> 영역에 가져오기(Import) 합니다.</p>
+<p>복사한 파일을 카카오링크 API를 구현 할 Svelte 파일(<code>App.svelte</code> 또는 <code>*.svelte</code>)의 <code>script</code> 영역 상단에 가져오기(import) 합니다.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;script&gt;
@@ -293,7 +293,7 @@ Kakao.isInitialized();</code></pre>
 <pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;script&gt;
   import "./kakao.js";
 
-  // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 입력합니다.
+  // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 입력해야 합니다.
   Kakao.init("JAVASCRIPT_KEY");
 
   // SDK 초기화 여부를 콘솔에 출력합니다.
@@ -326,7 +326,7 @@ Kakao.isInitialized();</code></pre>
 <div class="sect2">
 <h3 id="callFunc">1.4. 함수 호출하기</h3>
 <div class="paragraph">
-<p>JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 있지만, 이 문서에서는 직접 추가한 버튼에 연결하는 방법을 설명합니다.</p>
+<p>JavaScript SDK의 카카오링크 API는 두 가지 방법으로 호출할 수 있지만, Svelte는 공유하기 버튼을 JavaScript SDK를 통해 추가하기 어렵기 때문에,이 문서에서는 직접 추가한 버튼에 연결하는 방법을 설명합니다.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -386,10 +386,19 @@ Kakao.isInitialized();</code></pre>
 </li>
 <li>
 <p>호출 본문 작성하기<br>
-<code>script</code> 영역에 임의의 함수(<code>linkKakao()</code>)를 선언한 뒤, 선언한 함수 내부에 선택한 호출 함수(<code>sendDefault()</code>)를 사용하여 호출 본문을 작성합니다. 아래 예제를 참고합니다.</p>
+<code>script</code> 영역에 임의의 함수(<code>linkKakao()</code>)를 선언한 뒤, 내부에 선택한 호출 함수(<code>sendDefault()</code>)를 사용하여 호출 본문을 작성합니다. 아래 예제를 참고합니다.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html"></code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">function shareKakao() {
+  Kakao.Link.sendDefault({
+    objectType: "text",
+    text: "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
+    link: {
+      mobileWebUrl: "https://developers.kakao.com",
+      webUrl: "https://developers.kakao.com",
+    },
+  });
+}</code></pre>
 </div>
 </div>
 </li>
@@ -423,7 +432,7 @@ Kakao.isInitialized();</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>카카오링크 API를 구현 할 Svelte 파일(<code>App.svelte</code> 또는 <code>*.svelte</code>)의 script 영역 밖에 다음의 button 태그를 추가합니다.</p>
+<p>카카오링크 API를 구현 할 Svelte 파일(<code>App.svelte</code> 또는 <code>*.svelte</code>)의 <code>script</code> 영역 밖에 아래의 button 태그를 추가합니다.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;button on:click={shareKakao}&gt;
@@ -439,7 +448,7 @@ Kakao.isInitialized();</code></pre>
 <p>필요한 경우 버튼 내부에 호출 본문을 작성할 수도 있습니다. <a href="#callFuncInline">호출 인라인 작성</a>을 참고합니다.</p>
 </li>
 <li>
-<p><a href="#preview">미리 보기</a>에서 호출 함수(<code>sendDefault()</code>)를 사용하여 호출 본문(템플릿: 텍스트)을 작성하고 버튼에 연결한 예제를 확인할 수 있습니다.</p>
+<p>여기까지 설명한, 호출 함수(<code>sendDefault()</code>)를 사용하여 호출 본문(템플릿: 텍스트)을 작성하고 버튼에 연결한 전체 예제는 <a href="#preview">미리 보기</a>에서 확인할 수 있습니다.</p>
 </li>
 </ol>
 </div>
@@ -508,7 +517,7 @@ Kakao.isInitialized();</code></pre>
 <div id="footer">
 <div id="footer-text">
  Kakao: Technical Writer | 지원자: 이길재<br>
-Last updated 2022-04-22 08:56:08 +0900
+Last updated 2022-04-22 10:03:36 +0900
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
