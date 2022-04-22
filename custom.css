@@ -1006,6 +1006,9 @@ code {
   code {
     overflow-x: visible;
     word-wrap: break-word;
-    white-space: pre-line;
+    white-space: break-spaces;
   }
 }
+/* code {
+  white-space: break-spaces;
+} */
